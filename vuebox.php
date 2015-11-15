@@ -14,9 +14,21 @@ if ( ! defined( 'VUEBOX_THEME_PATH' ) ) {
 	define( 'VUEBOX_THEME_PATH', get_bloginfo( 'stylesheet_directory' ) );
 }
 
-include_once( 'helpers/functions.php' );
+include_once( 'functions/helpers.php' );
 
+include_once( 'class/VueBoxContainer.php' );
+include_once( 'class/VueBoxContainerBox.php' );
 include_once( 'class/VueBox.php' );
+
+$field_types = array(
+	'text',
+);
+
+foreach ( $field_types as $field_type ) {
+	$field_file_name = ucwords( $field_type );
+
+	include_once( "class/VueBox_{$field_file_name}.php" );
+}
 
 function vuebox_scripts_and_styles() {
 	$vuebox_path = vuebox_path( __FILE__ );
@@ -24,7 +36,8 @@ function vuebox_scripts_and_styles() {
 	$vuebox_js   = $vuebox_path . '/assets/js/';
 
 	wp_enqueue_script( 'vuebox-vue', $vuebox_js . 'vue.min.js' );
-	wp_enqueue_script( 'vuebox-app', $vuebox_js . 'vuebox.js', array( 'vuebox-vue' ), 2 );
+	wp_enqueue_script( 'vuebox-fields', $vuebox_js . 'vuebox-fields.js', array( 'vuebox-vue' ) );
+	wp_enqueue_script( 'vuebox-app', $vuebox_js . 'vuebox.js', array( 'vuebox-vue', 'vuebox-fields' ) );
 
 	wp_enqueue_style( 'vuebox-css', $vuebox_css . 'vuebox.css' );
 
