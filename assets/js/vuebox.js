@@ -1,13 +1,16 @@
 (function() {
 
-	var VueBox = new Vue({
+	var VueBoxContainers = document.getElementsByClassName('vuebox-container');
 
-		el: '#vuebox',
+	for ( var i = 0; i < VueBoxContainers.length; i++ ) {
 
-		data: {
-			
-		}
+		var VueBoxContainerSelector = '#' + VueBoxContainers[i].id;
 
-	});
+		new Vue({
+
+			el: VueBoxContainerSelector
+
+		});
+	}
 
 })();

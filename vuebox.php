@@ -19,25 +19,16 @@ include_once( 'functions/helpers.php' );
 include_once( 'class/VueBoxContainer.php' );
 include_once( 'class/VueBoxContainerBox.php' );
 include_once( 'class/VueBox.php' );
-
-$field_types = array(
-	'text',
-);
-
-foreach ( $field_types as $field_type ) {
-	$field_file_name = ucwords( $field_type );
-
-	include_once( "class/VueBox_{$field_file_name}.php" );
-}
+include_once( 'class/VueBox_Handle.php' );
 
 function vuebox_scripts_and_styles() {
 	$vuebox_path = vuebox_path( __FILE__ );
 	$vuebox_css  = $vuebox_path . '/assets/css/';
 	$vuebox_js   = $vuebox_path . '/assets/js/';
 
-	wp_enqueue_script( 'vuebox-vue', $vuebox_js . 'vue.min.js' );
-	wp_enqueue_script( 'vuebox-fields', $vuebox_js . 'vuebox-fields.js', array( 'vuebox-vue' ) );
-	wp_enqueue_script( 'vuebox-app', $vuebox_js . 'vuebox.js', array( 'vuebox-vue', 'vuebox-fields' ) );
+	wp_enqueue_script( 'vuebox-vue', $vuebox_js . 'vue.min.js', false, '1.0.0', true );
+	wp_enqueue_script( 'vuebox-fields', $vuebox_js . 'vuebox-fields.js', array( 'vuebox-vue' ), '1.0.0', true );
+	wp_enqueue_script( 'vuebox-app', $vuebox_js . 'vuebox.js', array( 'vuebox-vue', 'vuebox-fields' ), '1.0.0', true );
 
 	wp_enqueue_style( 'vuebox-css', $vuebox_css . 'vuebox.css' );
 

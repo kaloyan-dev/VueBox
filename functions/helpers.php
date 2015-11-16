@@ -5,3 +5,7 @@ function vuebox_path( $file ) {
 
 	return VUEBOX_THEME_PATH . $file_path;
 }
+
+function vuebox_generate_title( $name ) {
+	return ucwords( str_replace( '_', ' ', $name ) );
+}

@@ -1,0 +1,9 @@
+.vuebox-field-title {
+	padding: 0 0 5px 0;
+}
+
+.vuebox-field + .vuebox-field {
+	margin-top: 15px;
+	padding-top: 5px;
+	border-top: 1px solid #eee;
+}
