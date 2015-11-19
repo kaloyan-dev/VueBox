@@ -61,16 +61,9 @@ class VueBoxContainerBox {
 					$title = $field['title'] . ':';
 					$value = '';
 
-					if ( $this->data['type'] === 'custom-fields' ) {
-						if ( empty ( $_GET['post'] ) ) {
-							break;
-						}
-
-						$value = get_post_meta( $_GET['post'], "_{$name}", true );
-					} else {
-						$value = get_option( $name );
+					if ( empty ( $_GET['post'] ) ) {
+						break;
 					}
-
 					?>
 					
 					<vuebox-<?php echo $type; ?> title="<?php echo $title; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>"></vuebox-<?php echo $type; ?>>				
@@ -92,18 +85,7 @@ class VueBoxContainerBox {
 							$type  = $field['type'];
 							$name  = $field['name'];
 							$title = $field['title'] . ':';
-							$value = '';
-
-							if ( $this->data['type'] === 'custom-fields' ) {
-								if ( empty ( $_GET['post'] ) ) {
-									break;
-								}
-
-								$value = get_post_meta( $_GET['post'], "_{$name}", true );
-							} else {
-								$value = get_option( $name );
-							}
-
+							$value = get_option( $name );
 							?>
 							
 							<vuebox-<?php echo $type; ?> title="<?php echo $title; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>"></vuebox-<?php echo $type; ?>>				
