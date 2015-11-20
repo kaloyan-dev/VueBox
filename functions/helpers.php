@@ -17,7 +17,7 @@ function vuebox_generate_title( $name ) {
 }
 
 function vuebox_path( $file ) {
-	$file_path  = str_replace( STYLESHEETPATH, '', dirname( $file ) );
+	$file_path  = str_replace( apply_filters( 'vuebox_path_base', STYLESHEETPATH ), '', dirname( $file ) );
 
 	return VUEBOX_THEME_PATH . $file_path;
 }
