@@ -95,8 +95,8 @@ class VueBoxContainerBox {
 									foreach ( $subfields as $subfield ):
 										$subfield_type  = $subfield->data['type'];
 										$subfield_title = $subfield->data['title'];
-										$subfield_name  = $name . '_' . $subfield_index . '_' . $subfield->data['name'];
-										$subfield_value = get_post_meta( $_GET['post'], "_{$name}_{$subfield_index}_{$subfield_name}", true ); ?>
+										$subfield_name  = $name . '[' . $subfield_index . ']' . $subfield->data['name'];
+										$subfield_value = get_post_meta( $_GET['post'], "_{$name}[{$subfield_index}]{$subfield_name}", true ); ?>
 										<vuebox-<?php echo $subfield_type; ?>
 											title="<?php echo $subfield_title; ?>"
 											name="<?php echo $subfield_name; ?>"
@@ -104,7 +104,6 @@ class VueBoxContainerBox {
 										</vuebox-<?php echo $subfield_type; ?>>
 
 										<?php
-										$subfield_index++;
 									endforeach;
 								?>
 							</div>
