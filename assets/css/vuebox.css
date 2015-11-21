@@ -2,10 +2,28 @@
 	padding: 0 0 5px 0;
 }
 
+.vuebox-field-repeater .vuebox-field-title {
+	border-bottom: 1px solid #eee;
+	margin: 0 0 5px 0;
+}
+
 .vuebox-field + .vuebox-field {
 	margin-top: 15px;
 	padding-top: 5px;
 	border-top: 1px solid #eee;
+}
+
+.vuebox-repeater-actions {
+	font-size: 0;
+	line-height: 0; 
+}
+
+.vuebox-repeater-actions a {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 14px;
+	line-height: 18px;
+	text-decoration: underline; 
 }
 
 .vuebox-form-actions {

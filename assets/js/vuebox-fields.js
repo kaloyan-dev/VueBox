@@ -26,4 +26,20 @@
 		props: ['title', 'name', 'value']
 	} );
 
+	/* Repeater */
+	Vue.component( 'vuebox-repeater', {
+		template: '' +
+		'<div class="vuebox-field vuebox-field-repeater">' +
+			'<div class="vuebox-field-title">{{ title }}</div>' +
+			'<div class="vuebox-repeater-children">' +
+				'<slot>No fields added.</slot>' +
+			'</div>' +
+			'<div class="vuebox-repeater-actions">' +
+				'<a href="#">Add</a>' +
+			'</div>' +
+		'</div>',
+
+		props: ['title', 'name', 'value', 'children']
+	} );
+
 })();

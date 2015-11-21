@@ -21,7 +21,7 @@ abstract class VueBox {
 		$vuebox->data['name']  = $name;
 		$vuebox->data['title'] = $title;
 
-		return $vuebox->data;
+		return $vuebox;
 	}
 
 }

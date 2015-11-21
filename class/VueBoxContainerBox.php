@@ -56,18 +56,61 @@ class VueBoxContainerBox {
 		<div id="vuebox-<?php echo $container_id; ?>" class="vuebox-container">
 			<?php
 				foreach ( $this->data['fields'] as $field ):
-					$type  = $field['type'];
-					$name  = $field['name'];
-					$title = $field['title'] . ':';
+					$type           = $field->data['type'];
+					$name           = $field->data['name'];
+					$title          = $field->data['title'];
+					$subfields_data = '';
+
+					if ( $type !== 'repeater' ) {
+						$title .= ':';
+					} else {
+						$subfields      = $field->data['fields'];
+						$subfields_data = json_encode( $field->data['fields'] );
+					}
+
 					$value = '';
 
 					if ( empty ( $_GET['post'] ) ) {
 						break;
 					}
-					?>
-					
-					<vuebox-<?php echo $type; ?> title="<?php echo $title; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>"></vuebox-<?php echo $type; ?>>				
-				<?php endforeach;
+
+					$value = get_post_meta( $_GET['post'], "_{$name}", true );
+
+					if ( $type !== 'repeater' ): ?>					
+						<vuebox-<?php echo $type; ?>
+							title="<?php echo $title; ?>"
+							name="<?php echo $name; ?>"
+							value="<?php echo $value; ?>">
+						</vuebox-<?php echo $type; ?>>
+					<?php else: ?>
+						<vuebox-<?php echo $type; ?>
+							title="<?php echo $title; ?>"
+							name="<?php echo $name; ?>"
+							subfields="<?php echo $subfields_data; ?>">
+
+							<div class="vuebox-repeater-fieldwrap">
+								<?php
+									$subfield_index = 0;
+
+									foreach ( $subfields as $subfield ):
+										$subfield_type  = $subfield->data['type'];
+										$subfield_title = $subfield->data['title'];
+										$subfield_name  = $name . '_' . $subfield_index . '_' . $subfield->data['name'];
+										$subfield_value = get_post_meta( $_GET['post'], "_{$name}_{$subfield_index}_{$subfield_name}", true ); ?>
+										<vuebox-<?php echo $subfield_type; ?>
+											title="<?php echo $subfield_title; ?>"
+											name="<?php echo $subfield_name; ?>"
+											value="<?php echo $subfield_value; ?>">
+										</vuebox-<?php echo $subfield_type; ?>>
+
+										<?php
+										$subfield_index++;
+									endforeach;
+								?>
+							</div>
+						</vuebox-<?php echo $type; ?>>
+					<?php endif;
+				endforeach;
 			?>
 		</div>
 		<?php
