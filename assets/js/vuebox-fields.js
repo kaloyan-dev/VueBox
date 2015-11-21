@@ -26,6 +26,23 @@
 		props: ['title', 'name', 'value']
 	} );
 
+	/* Colorpicker */
+	Vue.component( 'vuebox-colorpicker', {
+		template: '' +
+		'<div class="vuebox-field vuebox-field-color">' +
+			'<div class="vuebox-field-title">' +
+				'<label>{{ title }}</label>' +
+			'</div>' +
+			'<input name="{{ name }}" type="text" value="{{ value }}">' +
+		'</div>',
+
+		ready: function() {
+			jQuery( this.$el.children[1] ).iris();
+		},
+
+		props: ['title', 'name', 'value']
+	} );
+
 	/* Repeater */
 	Vue.component( 'vuebox-repeater', {
 		template: '' +
