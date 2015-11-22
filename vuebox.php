@@ -10,6 +10,10 @@
 |--------------------------------------------------------------------------
 */
 
+if ( ! defined( 'VUEBOX_VERSION' ) ) {
+	define( 'VUEBOX_VERSION', '1.0.0' );
+}
+
 if ( ! defined( 'VUEBOX_THEME_PATH' ) ) {
 	define( 'VUEBOX_THEME_PATH', get_bloginfo( 'stylesheet_directory' ) );
 }
@@ -26,14 +30,14 @@ function vuebox_scripts_and_styles() {
 	$vuebox_css  = $vuebox_path . '/assets/css/';
 	$vuebox_js   = $vuebox_path . '/assets/js/';
 
-	wp_enqueue_script( 'vuebox-vue', $vuebox_js . 'vue.min.js', false, '1.0.0', true );
-	wp_enqueue_script( 'vuebox-fields', $vuebox_js . 'vuebox-fields.js', array( 'vuebox-vue', 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'vuebox-vue', $vuebox_js . 'vue.min.js', false, VUEBOX_VERSION, true );
+	wp_enqueue_script( 'vuebox-fields', $vuebox_js . 'vuebox-fields.js', array( 'vuebox-vue', 'jquery' ), VUEBOX_VERSION, true );
 
 	if ( ! wp_script_is( 'iris', 'enqueueed' ) ) {
 		wp_enqueue_script( 'iris' );
 	}
 
-	wp_enqueue_script( 'vuebox-app', $vuebox_js . 'vuebox.js', array( 'vuebox-vue', 'vuebox-fields' ), '1.0.0', true );
+	wp_enqueue_script( 'vuebox-app', $vuebox_js . 'vuebox.js', array( 'vuebox-vue', 'vuebox-fields' ), VUEBOX_VERSION, true );
 
 	wp_enqueue_style( 'vuebox-css', $vuebox_css . 'vuebox.css' );
 
