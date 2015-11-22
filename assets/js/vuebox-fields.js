@@ -37,7 +37,9 @@
 		'</div>',
 
 		ready: function() {
-			jQuery( this.$el.children[1] ).iris();
+			jQuery( this.$el.children[1] ).iris({
+				palettes: true
+			});
 		},
 
 		props: ['title', 'name', 'value']
