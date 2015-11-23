@@ -2,9 +2,9 @@
 	padding: 0 0 5px 0;
 }
 
-.vuebox-field-repeater .vuebox-field-title {
-	border-bottom: 1px solid #eee;
+.vuebox-field-repeater > .vuebox-field-title {
 	margin: 0 0 5px 0;
+	padding: 0 0 0 22px; 
 }
 
 .vuebox-field + .vuebox-field {
@@ -15,7 +15,8 @@
 
 .vuebox-repeater-actions {
 	font-size: 0;
-	line-height: 0; 
+	line-height: 0;
+	padding-top: 10px;
 }
 
 .vuebox-repeater-actions a {
@@ -28,4 +29,13 @@
 
 .vuebox-form-actions {
 	padding-top: 10px;
+}
+
+.vuebox-field.vuebox-field-repeater {
+	padding: 10px 0;
+}
+
+.vuebox-repeater-children {
+	border-left: 2px solid #dedede;
+	padding-left: 20px;
 }

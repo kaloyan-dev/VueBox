@@ -62,8 +62,7 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	<?php else: ?>
 		<vuebox-<?php echo $type; ?>
 			title="<?php echo $title; ?>"
-			name="<?php echo $name; ?>"
-			subfields="<?php echo $subfields_data; ?>">
+			name="<?php echo $name; ?>">
 
 			<div class="vuebox-repeater-fieldwrap">
 				<?php
