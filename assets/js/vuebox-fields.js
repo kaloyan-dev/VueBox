@@ -8,9 +8,10 @@
 				'<label>{{ title }}</label>' +
 			'</div>' +
 			'<input class="widefat" name="{{ name }}" type="text" value="{{ value }}">' +
+			'<p v-if="caption" class="vuebox-caption">{{ caption }}</p>' +
 		'</div>',
 
-		props: ['title', 'name', 'value']
+		props: ['title', 'name', 'value', 'caption']
 	} );
 
 	/* Textarea */
@@ -21,9 +22,10 @@
 				'<label>{{ title }}</label>' +
 			'</div>' +
 			'<textarea class="widefat" name="{{ name }}" type="text">{{ value }}</textarea>' +
+			'<p v-if="caption" class="vuebox-caption">{{ caption }}</p>' +
 		'</div>',
 
-		props: ['title', 'name', 'value']
+		props: ['title', 'name', 'value', 'caption']
 	} );
 
 	/* Colorpicker */
@@ -34,6 +36,7 @@
 				'<label>{{ title }}</label>' +
 			'</div>' +
 			'<input name="{{ name }}" type="text" value="{{ value }}">' +
+			'<p v-if="caption" class="vuebox-caption">{{ caption }}</p>' +
 		'</div>',
 
 		ready: function() {
@@ -42,7 +45,7 @@
 			});
 		},
 
-		props: ['title', 'name', 'value']
+		props: ['title', 'name', 'value', 'caption']
 	} );
 
 	/* Repeater */
@@ -56,9 +59,10 @@
 			'<div class="vuebox-repeater-actions">' +
 				'<a href="#" class="button">Add Group</a>' +
 			'</div>' +
+			'<p v-if="caption" class="vuebox-caption">{{ caption }}</p>' +
 		'</div>',
 
-		props: ['title', 'name', 'value', 'children']
+		props: ['title', 'name', 'value', 'children', 'caption']
 	} );
 
 })();

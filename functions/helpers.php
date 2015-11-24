@@ -26,6 +26,7 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	$type           = $field->data['type'];
 	$name           = $field->data['name'];
 	$title          = $field->data['title'];
+	$caption        = $field->data['caption'];
 	$subfields      = array();
 	$subfields_data = '';
 
@@ -57,12 +58,14 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 		<vuebox-<?php echo $type; ?>
 			title="<?php echo $title; ?>"
 			name="<?php echo $name; ?>"
-			value="<?php echo $value; ?>">
+			value="<?php echo $value; ?>"
+			caption="<?php echo $caption; ?>">
 		</vuebox-<?php echo $type; ?>>
 	<?php else: ?>
 		<vuebox-<?php echo $type; ?>
 			title="<?php echo $title; ?>"
-			name="<?php echo $name; ?>">
+			name="<?php echo $name; ?>"
+			caption="<?php echo $caption; ?>">
 
 			<div class="vuebox-repeater-fieldwrap">
 				<?php

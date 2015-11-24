@@ -39,3 +39,9 @@
 	border-left: 2px solid #dedede;
 	padding-left: 20px;
 }
+
+.vuebox-caption {
+	color: #888;
+	font-style: italic;
+	margin-top: 4px;
+}

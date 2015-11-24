@@ -4,7 +4,12 @@ abstract class VueBox {
 
 	protected $options = array();
 
-	public $data = array();
+	public $data = array(
+		'type'    => false,
+		'name'    => false,
+		'title'   => false,
+		'caption' => false,
+	);
 
 	public static function set( $type, $name, $title = false ) {
 		if ( ! $type || ! $name ) {
@@ -22,6 +27,12 @@ abstract class VueBox {
 		$vuebox->data['title'] = $title;
 
 		return $vuebox;
+	}
+
+	public function caption( $caption ) {
+		$this->data['caption'] = $caption;
+
+		return $this;
 	}
 
 }
