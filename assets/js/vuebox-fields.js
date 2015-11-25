@@ -57,7 +57,7 @@
 				'<slot>No fields added.</slot>' +
 			'</div>' +
 			'<div class="vuebox-repeater-actions">' +
-				'<a href="#" class="button">Add Group</a>' +
+				'<a href="#">Add Group</a>' +
 			'</div>' +
 			'<p v-if="caption" class="vuebox-caption">{{ caption }}</p>' +
 		'</div>',
