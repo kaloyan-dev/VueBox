@@ -62,20 +62,19 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 			caption="<?php echo $caption; ?>">
 		</vuebox-<?php echo $type; ?>>
 	<?php else: ?>
-		<vuebox-<?php echo $type; ?>
+		<vuebox-repeater
 			title="<?php echo $title; ?>"
 			name="<?php echo $name; ?>"
-			caption="<?php echo $caption; ?>">
+			caption="<?php echo $caption; ?>"
+			:fieldsets="1">
 
-			<div class="vuebox-repeater-fieldwrap">
-				<?php
-					$subfield_index = 0;
+			<?php
+				$subfield_index = 0;
 
-					foreach ( $subfields as $subfield ):
-						vuebox_render_field( $subfield, $post_fields, $name, $subfield_index );
-					endforeach;
-				?>
-			</div>
+				foreach ( $subfields as $subfield ):
+					vuebox_render_field( $subfield, $post_fields, $name, $subfield_index );
+				endforeach;
+			?>
 		</vuebox-<?php echo $type; ?>>
 	<?php endif;
 }

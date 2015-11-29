@@ -54,15 +54,23 @@
 		'<div class="vuebox-field vuebox-field-repeater">' +
 			'<div class="vuebox-field-title">{{ title }}</div>' +
 			'<div class="vuebox-repeater-children">' +
-				'<slot>No fields added.</slot>' +
+				'<div class="vuebox-repeater-fieldwrap" v-for="n in fieldsets">' +
+					'<slot>No fields added.</slot>' +
+				'</div>' +
 			'</div>' +
 			'<div class="vuebox-repeater-actions">' +
-				'<a href="#">Add Group</a>' +
+				'<a href="#" @click.prevent="addFieldset">Add Fieldset</a>' +
 			'</div>' +
 			'<p v-if="caption" class="vuebox-caption">{{ caption }}</p>' +
 		'</div>',
 
-		props: ['title', 'name', 'value', 'children', 'caption']
+		methods: {
+			addFieldset: function() {
+				this.fieldsets++;
+			}
+		},
+
+		props: ['title', 'name', 'value', 'children', 'caption', 'fieldsets']
 	} );
 
 })();
