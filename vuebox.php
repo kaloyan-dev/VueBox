@@ -39,6 +39,9 @@ function vuebox_scripts_and_styles() {
 
 	wp_enqueue_script( 'vuebox-app', $vuebox_js . 'vuebox.js', array( 'vuebox-vue', 'vuebox-fields' ), VUEBOX_VERSION, true );
 
+	if ( ! wp_style_is( 'font-awesome', 'enqueueed' ) ) {
+		wp_enqueue_style( 'font-awesome', $vuebox_path . '/assets/vendor/font-awesome/css/font-awesome.min.css' );
+	}
 	wp_enqueue_style( 'vuebox-css', $vuebox_css . 'vuebox.css' );
 
 }
