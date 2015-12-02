@@ -55,6 +55,7 @@
 			'<div class="vuebox-field-title">{{ title }}</div>' +
 			'<div class="vuebox-repeater-children">' +
 				'<div class="vuebox-repeater-fieldwrap" v-for="n in fieldsets">' +
+					'<span class="vuebox-fieldwrap-handle"><i class="fa fa-arrows-v"></i></span>' +
 					'<slot>No fields added.</slot>' +
 				'</div>' +
 			'</div>' +
