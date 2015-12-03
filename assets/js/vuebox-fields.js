@@ -52,6 +52,7 @@
 	Vue.component( 'vuebox-repeater', {
 		template: '' +
 		'<div class="vuebox-field vuebox-field-repeater">' +
+			'<input type="hidden" name="{{ name }}[]" />' +
 			'<div class="vuebox-field-title">{{ title }}</div>' +
 			'<div class="vuebox-repeater-children">' +
 				'<div class="vuebox-repeater-fieldwrap" v-for="n in fieldsets">' +
