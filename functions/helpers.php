@@ -31,8 +31,10 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	$subfields_data = '';
 
 	if ( $parent_name ) {
-		$name  = $parent_name . '[' . $subfield_index . ']' . $name;
-		$value = get_post_meta( $_GET['post'], "_{$parent_name}[{$subfield_index}]{$name}", true );
+		$parent_data = get_post_meta( $_GET['post'], "_{$parent_name}", true );
+		$value = isset( $parent_data[$subfield_index][$name] ) ? $parent_data[$subfield_index][$name] : '';
+
+		$name  = $parent_name . '[' . $subfield_index . '][' . $name . ']';
 	}
 
 	if ( $type !== 'repeater' ) {
@@ -42,14 +44,15 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 		$subfields_data = json_encode( $field->data['fields'] );
 	}
 
-	$value = '';
-
 	if ( $post_fields ) {
 		if ( empty ( $_GET['post'] ) ) {
 			break;
 		}
 
-		$value = get_post_meta( $_GET['post'], "_{$name}", true );
+		if ( ! $parent_name ) {
+			$value = get_post_meta( $_GET['post'], "_{$name}", true );			
+		}
+
 	} else {
 		$value = get_option( $name );			
 	}

@@ -22,6 +22,7 @@ class VueBoxContainerBox {
 
 		if ( $this->data['type'] === 'custom-fields' ) {
 			add_action( 'add_meta_boxes', array( $this, 'init_meta_box' ) );
+			add_action( 'save_post', array( $this, 'save_post_meta' ) );
 		} else  {
 			add_action( 'admin_menu', array( $this, 'init_menu_page' ) );
 		}
@@ -74,5 +75,13 @@ class VueBoxContainerBox {
 			</div>
 		</div>
 	<?php
+	}
+
+	public function save_post_meta( $post_id ) {
+		foreach ( $this->data['fields'] as $field ) {
+			$field_name = $field->data['name'];
+
+			update_post_meta( $post_id, '_' . $field_name, $_POST[$field_name] );
+		}
 	}
 }
