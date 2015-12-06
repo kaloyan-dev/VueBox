@@ -33,7 +33,6 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	if ( $parent_name ) {
 		$parent_data = get_post_meta( $_GET['post'], "_{$parent_name}", true );
 		$value = isset( $parent_data[$subfield_index][$name] ) ? $parent_data[$subfield_index][$name] : '';
-
 		$name  = $parent_name . '[' . $subfield_index . '][' . $name . ']';
 	}
 
@@ -64,19 +63,20 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 			value="<?php echo $value; ?>"
 			caption="<?php echo $caption; ?>">
 		</vuebox-<?php echo $type; ?>>
-	<?php else: ?>
+	<?php else:
+		$fieldsets = count( $value ) > 1 ? count( $value ) : 1; ?>
 		<vuebox-repeater
 			title="<?php echo $title; ?>"
 			name="<?php echo $name; ?>"
 			caption="<?php echo $caption; ?>"
-			:fieldsets="1">
+			:fieldsets="<?php echo $fieldsets; ?>">
 
 			<?php
-				$subfield_index = 0;
-
-				foreach ( $subfields as $subfield ):
-					vuebox_render_field( $subfield, $post_fields, $name, $subfield_index );
-				endforeach;
+				for ( $i = 0; $i < $fieldsets; $i++ ):
+					foreach ( $subfields as $subfield ):
+						vuebox_render_field( $subfield, $post_fields, $name, $i );
+					endforeach;
+				endfor;
 			?>
 		</vuebox-<?php echo $type; ?>>
 	<?php endif;

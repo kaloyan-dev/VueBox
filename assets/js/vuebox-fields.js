@@ -69,6 +69,7 @@
 		methods: {
 			addFieldset: function() {
 				this.fieldsets++;
+				console.log(this.$children);
 			}
 		},
 
