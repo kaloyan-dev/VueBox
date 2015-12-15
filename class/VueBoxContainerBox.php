@@ -81,6 +81,10 @@ class VueBoxContainerBox {
 		foreach ( $this->data['fields'] as $field ) {
 			$field_name = $field->data['name'];
 
+			if ( empty( $_POST[$field_name] ) ) {
+				return;
+			}
+
 			update_post_meta( $post_id, '_' . $field_name, $_POST[$field_name] );
 		}
 	}
