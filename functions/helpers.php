@@ -17,9 +17,11 @@ function vuebox_generate_title( $name ) {
 }
 
 function vuebox_path( $file ) {
-	$file_path  = str_replace( apply_filters( 'vuebox_path_base', STYLESHEETPATH ), '', dirname( $file ) );
+	$stylesheet_path = str_replace( '\\' ,'/', apply_filters( 'vuebox_path_base', STYLESHEETPATH ) );
+	$file_path       = str_replace( '\\' ,'/', dirname( $file ) );
+	$new_file_path   = str_replace( $stylesheet_path, '', $file_path );
 
-	return VUEBOX_THEME_PATH . $file_path;
+	return VUEBOX_THEME_PATH . $new_file_path;
 }
 
 function vuebox_render_field( $field, $post_fields = false, $parent_name = false, $subfield_index = 0 ) {
