@@ -18,6 +18,10 @@ if ( ! defined( 'VUEBOX_THEME_PATH' ) ) {
 	define( 'VUEBOX_THEME_PATH', get_bloginfo( 'stylesheet_directory' ) );
 }
 
+if ( ! defined( 'VUEBOX_ROOT' ) ) {
+	define( 'VUEBOX_ROOT', dirname( __FILE__ ) );
+}
+
 include_once( 'functions/helpers.php' );
 
 include_once( 'class/VueBoxContainer.php' );

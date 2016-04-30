@@ -63,30 +63,13 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 		$value = get_option( $name );			
 	}
 
-	if ( $type !== 'repeater' ): ?>					
-		<vuebox-<?php echo $type; ?>
-			title="<?php echo $title; ?>"
-			name="<?php echo $name; ?>"
-			value="<?php echo $value; ?>"
-			caption="<?php echo $caption; ?>">
-		</vuebox-<?php echo $type; ?>>
-	<?php else:
-		$fieldsets = count( $value ) > 1 ? count( $value ) : 1; ?>
-		<vuebox-repeater
-			title="<?php echo $title; ?>"
-			name="<?php echo $name; ?>"
-			caption="<?php echo $caption; ?>"
-			:fieldsets="<?php echo $fieldsets; ?>">
-
-			<?php
-				for ( $i = 0; $i < $fieldsets; $i++ ):
-					foreach ( $subfields as $subfield ):
-						vuebox_render_field( $subfield, $post_fields, $name, $i );
-					endforeach;
-				endfor;
-			?>
-		</vuebox-<?php echo $type; ?>>
-	<?php endif;
+	if ( $type !== 'repeater' ) {
+		include( VUEBOX_ROOT . "/fields/vuebox-{$type}.php" );
+		return;
+	}
+	
+	$fieldsets = count( $value ) > 1 ? count( $value ) : 1;
+	include( VUEBOX_ROOT . "/fields/vuebox-repeater.php" );
 }
 
 function vuebox_render_fields( $fields_class, $fields, $post_fields = false ) {
