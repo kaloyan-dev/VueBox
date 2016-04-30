@@ -40,9 +40,7 @@
 		'</div>',
 
 		ready: function() {
-			jQuery( this.$el.children[1] ).iris({
-				palettes: true
-			});
+			jQuery( this.$el.children[1] ).wpColorPicker();
 		},
 
 		props: ['title', 'name', 'value', 'caption']

@@ -33,7 +33,12 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	$subfields_data = '';
 
 	if ( $parent_name ) {
-		$parent_data = get_post_meta( $_GET['post'], "_{$parent_name}", true );
+		if ( isset( $_GET['post'] ) ) {
+			$parent_data = get_post_meta( $_GET['post'], "_{$parent_name}", true );
+		} else {
+			$parent_data = get_option( "_{$parent_name}", true );
+		}
+
 		$value = isset( $parent_data[$subfield_index][$name] ) ? $parent_data[$subfield_index][$name] : '';
 		$name  = $parent_name . '[' . $subfield_index . '][' . $name . ']';
 	}

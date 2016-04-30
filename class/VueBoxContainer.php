@@ -14,7 +14,7 @@ class VueBoxContainer {
 			$title = vuebox_generate_title( $name );
 		}
 
-		$container = new VueBoxContainerBox;
+		$container = new VueBoxContainerBox();
 
 		$container->data['type']  = $type;
 		$container->data['name']  = $name;

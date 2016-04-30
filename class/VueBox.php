@@ -20,7 +20,7 @@ abstract class VueBox {
 			$title = vuebox_generate_title( $name );
 		}
 
-		$vuebox= new VueBox_Handle();
+		$vuebox = new VueBox_Handle();
 
 		$vuebox->data['type']  = $type;
 		$vuebox->data['name']  = $name;
