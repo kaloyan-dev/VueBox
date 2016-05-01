@@ -31,6 +31,7 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	$caption        = $field->data['caption'];
 	$subfields      = array();
 	$subfields_data = '';
+	$fieldsets      = '';
 
 	if ( $parent_name ) {
 		if ( isset( $_GET['post'] ) ) {
@@ -63,17 +64,14 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 		$value = get_option( $name );			
 	}
 
-	if ( $type !== 'repeater' ) {
-		include( VUEBOX_ROOT . "/fields/vuebox-{$type}.php" );
-		return;
+	if ( $type === 'repeater' ) {
+		$fieldsets = count( $value ) > 1 ? count( $value ) : 1;
 	}
-	
-	$fieldsets = count( $value ) > 1 ? count( $value ) : 1;
-	include( VUEBOX_ROOT . "/fields/vuebox-repeater.php" );
+	include( VUEBOX_ROOT . "/fields/vuebox-{$type}.php" );
 }
 
 function vuebox_render_fields( $fields_class, $fields, $post_fields = false ) {
-	foreach ( $fields_class->data['fields'] as $field ):
+	foreach ( $fields_class->data['fields'] as $field ) {
 		vuebox_render_field( $field, $post_fields );
-	endforeach;
+	}
 }
