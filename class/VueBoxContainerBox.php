@@ -54,7 +54,7 @@ class VueBoxContainerBox {
 
 	public function render_meta_box() {
 		$container_id = str_replace( '_', '-', $this->data['name'] ); ?>
-		<div id="vuebox-<?php echo $container_id; ?>" class="vuebox-container">
+		<div id="vuebox-<?php echo $container_id; ?>" class="vuebox-container" v-cloak>
 			<?php vuebox_render_fields( $this, $this->data['fields'], true ); ?>
 		</div>
 		<?php
@@ -62,7 +62,7 @@ class VueBoxContainerBox {
 
 	public function render_menu_page() {
 		$container_id = str_replace( '_', '-', $this->data['name'] ); ?>
-		<div id="vuebox-<?php echo $container_id; ?>" class="vuebox-container">
+		<div id="vuebox-<?php echo $container_id; ?>" class="vuebox-container" v-cloak>
 			<div class="wrap">
 				<h2><?php echo $this->data['title']; ?></h2>
 
