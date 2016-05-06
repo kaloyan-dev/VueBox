@@ -10,13 +10,15 @@
 }
 
 .vuebox-repeater-fieldwrap {
-	padding: 5px 0 10px 30px;
+	padding: 5px 10px 10px 30px;
 	position: relative;
 	background: #fff;
+	/*box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);*/
+	border: 1px solid #e5e5e5;
 }
 
 .vuebox-repeater-fieldwrap + .vuebox-repeater-fieldwrap {
-	border-top: 1px solid #dedede;
+	margin-top: 10px;
 }
 
 .vuebox-fieldwrap-handle {
@@ -25,11 +27,11 @@
 	left: 0;
 	width: 20px;
 	height: 100%;
-	background: #dedede;
 	cursor: pointer;
 	font-size: 12px;
 	line-height: 20px;
 	text-align: center; 
+	border-right: 1px solid #e1e1e1;
 }
 
 .vuebox-fieldwrap-handle i {
@@ -39,7 +41,7 @@
 	margin: -10px 0 0 -10px;
 	width: 20px;
 	height: 20px;
-	color: #666;
+	color: #777;
 }
 
 .vuebox-field + .vuebox-field {
