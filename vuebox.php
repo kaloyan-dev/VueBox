@@ -25,7 +25,8 @@ if ( ! defined( 'VUEBOX_ROOT' ) ) {
 include_once( 'functions/helpers.php' );
 
 include_once( 'class/VueBoxContainer.php' );
-include_once( 'class/VueBoxContainerBox.php' );
+include_once( 'class/VueBoxMenuPage.php' );
+include_once( 'class/VueBoxCustomFields.php' );
 include_once( 'class/VueBox.php' );
 include_once( 'class/VueBox_Handle.php' );
 
