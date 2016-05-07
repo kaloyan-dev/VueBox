@@ -6,6 +6,7 @@ class VueBoxMenuPage extends VueBoxContainer {
 		$this->data['fields'] = (array) $fields;
 
 		add_action( 'admin_menu', array( $this, 'init_menu_page' ) );
+		add_action( 'admin_init', array( $this, 'save_options' ) );
 
 		return $this;
 	}
@@ -31,10 +32,29 @@ class VueBoxMenuPage extends VueBoxContainer {
 					<div class="vuebox-form-actions">
 						<input type="submit" class="button button-primary" value="<?php _e( 'Save Options', 'vuebox' ); ?>" />
 					</div>
+					<input type="hidden" name="vuebox-<?php echo $container_id; ?>" value="1" />
 				</form>
 			</div>
 		</div>
 		<?php
+	}
+
+	public function save_options() {
+		$container_id = str_replace( '_', '-', $this->data['name'] );
+
+		if ( ! isset( $_POST["vuebox-{$container_id}"] ) ) {
+			return;
+		}
+
+		foreach ( $this->data['fields'] as $field ) {
+			$field_name = $field->data['name'];
+
+			if ( empty( $_POST[$field_name] ) ) {
+				return;
+			}
+
+			update_option( $field_name, $_POST[$field_name] );
+		}
 	}
 
 }
