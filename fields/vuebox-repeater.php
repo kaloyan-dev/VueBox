@@ -2,7 +2,7 @@
 	<div class="vuebox-field vuebox-field-repeater">
 		<input type="hidden" name="{{ name }}[]" />
 		<div class="vuebox-field-title">{{ title }}</div>
-		<div class="vuebox-repeater-children">
+		<div class="vuebox-repeater-children" v-sortable:fieldsets="{ animation: 200 }">
 			<div class="vuebox-repeater-fieldwrap" v-for="n in fieldsets">
 				<span class="vuebox-fieldwrap-handle"><i class="fa fa-arrows-v"></i></span>
 				<?php
