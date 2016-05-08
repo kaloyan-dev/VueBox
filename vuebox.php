@@ -36,6 +36,8 @@ function vuebox_scripts_and_styles() {
 	$vuebox_css    = $vuebox_path . '/assets/css/';
 	$vuebox_js     = $vuebox_path . '/assets/js/';
 
+	wp_enqueue_media();
+
 	wp_enqueue_script( 'vuebox-vue', $vuebox_js . 'vue.min.js', array( 'wp-color-picker' ), VUEBOX_VERSION, true );
 	wp_enqueue_script( 'vuebox-fields', $vuebox_js . 'vuebox-fields.js', array( 'vuebox-vue', 'jquery' ), VUEBOX_VERSION, true );
 

@@ -29,6 +29,8 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	$name           = $field->data['name'];
 	$title          = $field->data['title'];
 	$caption        = $field->data['caption'];
+	$value          = '';
+	$url            = '';
 	$subfields      = array();
 	$subfields_data = '';
 	$fieldsets      = '';
@@ -66,9 +68,14 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 		}
 	}
 
+	if ( $type === 'image' ) {
+		$url = $value ? wp_get_attachment_url( intval( $value ) ) : '';
+	}
+
 	if ( $type === 'repeater' ) {
 		$fieldsets = count( $value ) > 1 ? count( $value ) : 1;
 	}
+
 	include( VUEBOX_ROOT . "/fields/vuebox-{$type}.php" );
 }
 
