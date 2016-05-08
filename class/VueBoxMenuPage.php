@@ -49,7 +49,7 @@ class VueBoxMenuPage extends VueBoxContainer {
 		foreach ( $this->data['fields'] as $field ) {
 			$field_name = $field->data['name'];
 
-			if ( empty( $_POST[$field_name] ) ) {
+			if ( ! isset( $_POST[$field_name] ) ) {
 				return;
 			}
 
