@@ -15,7 +15,10 @@
 			vm.$emit( 'sort', target, e.oldIndex, e.newIndex );
 		};
 
-		Sortable.create( this.el, value );
+		Sortable.create( this.el, {
+			animation: 200,
+			handle   : '.vuebox-fieldwrap-handle'
+		} );
 	});
 
 	var VueBoxContainers = document.getElementsByClassName( 'vuebox-container' );
