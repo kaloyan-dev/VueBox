@@ -3,7 +3,7 @@
 		<div class="vuebox-field-title">
 			<label>{{ title }}</label>
 		</div>
-		<input class="widefat" name="{{ name }}" type="text" value="{{ value }}">
+		<input class="widefat" :name="name" type="text" value="{{ value }}">
 		<p v-if="caption" class="vuebox-caption">{{ caption }}</p>
 	</div>	
 </vuebox-text>

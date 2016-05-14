@@ -55,10 +55,28 @@
 
 	/* Repeater */
 	Vue.component( 'vuebox-repeater', {
-		props: ['title', 'name', 'value', 'children', 'caption', 'fieldsets'],
+		props: ['title', 'name', 'value', 'children', 'caption', 'fieldsets', 'fieldsdata', 'newsets'],
+		ready: function() {
+			this.newsets = 0;
+		},
 		methods: {
 			addFieldset: function() {
-				this.fieldsets++;
+				this.newsets++;
+
+				var _this = this;
+
+				console.log(_this.$children);
+
+				Vue.nextTick(function() {
+					var $children = _this.$children;
+
+					for ( var i = 0; i < $children.length; i++ ) {
+						var currentName = $children[i].name;
+						$children[i].$set( 'name', currentName.replace( '{FIELDSET_INDEX}', _this.fieldsets ) )
+					}
+
+					_this.fieldsets++;
+				});
 			}
 		}
 	} );

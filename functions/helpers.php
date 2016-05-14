@@ -47,10 +47,14 @@ function vuebox_render_field( $field, $post_fields = false, $parent_name = false
 	}
 
 	if ( $type !== 'repeater' ) {
-		$title .= ':';
+		$title .= '';
 	} else {
 		$subfields      = $field->data['fields'];
-		$subfields_data = json_encode( $field->data['fields'] );
+		$subfields_data = array();
+
+		foreach ( $subfields as $subfield ) {
+			$subfields_data[] = $subfield->data;
+		}
 	}
 
 	if ( $post_fields ) {
